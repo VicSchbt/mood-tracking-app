@@ -1,10 +1,26 @@
-import './globals.css';
-import { ReactNode } from 'react';
+// src/app/page.tsx
+import Header from '@/components/Header'
+import Greeting from '@/components/Greeting'
+import LogMoodButton from '@/components/LogMoodButton'
+import AverageCard from '@/components/AverageCard'
+import TrendChart from '@/components/TrendChart'
+import Container from '@/components/Container'
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function HomeEmptyPage() {
   return (
-    <html lang="en">
-      <body className="bg-gray-50 text-gray-900 font-sans">{children}</body>
-    </html>
-  );
+    <main className="min-h-screen bg-gradient-light font-sans">
+      {/* <Header /> */}
+      <div className="flex flex-col gap-600 px-200 items-center">
+        <Greeting />
+        <LogMoodButton />
+
+        {/* <Container>
+        <AverageCard type="mood" />
+        <AverageCard type="sleep" />
+        </Container>
+
+        <TrendChart />  */}
+      </div>
+    </main>
+  )
 }

@@ -14,7 +14,7 @@ const redditSans = Reddit_Sans({
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={redditSans.variable}>
-      <body className="font-sans bg-neutral-0 text-neutral-900">
+      <body>
         {children}
       </body>
     </html>
