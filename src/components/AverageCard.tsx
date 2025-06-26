@@ -5,8 +5,8 @@ type Props = {
   
   export default function AverageCard({ type }: Props) {
     const titles = {
-      mood: 'Average Mood (Last 5 Check-ins)',
-      sleep: 'Average Sleep (Last 5 Check-ins)',
+      mood: 'Average Mood',
+      sleep: 'Average Sleep',
     }
   
     const messages = {
@@ -21,11 +21,23 @@ type Props = {
     }
   
     return (
-      <div className="flex-1 bg-white rounded-16 p-200 shadow-sm">
-        <p className="text-text-preset-8 text-neutral-600 mb-100">{titles[type]}</p>
-        <div className="bg-blue-100 rounded-12 p-150">
-          <p className="text-text-preset-6 font-semibold mb-050">{messages[type].title}</p>
-          <p className="text-text-preset-8 text-neutral-600">{messages[type].subtitle}</p>
+      <div className="flex flex-col gap-150">
+        <p className="preset-5 text-neutral-900">{titles[type]} 
+          <span className="preset-7 text-neutral-600"> (Last 5 Check-ins)</span>
+        </p>
+        <div className="bg-blue-100 rounded-16 px-200 py-300 flex flex-col gap-150 relative overflow-hidden">
+          {/* Decorative background image */}
+          <img
+            src="/images/bg-pattern-averages.svg"
+            alt=""
+            aria-hidden="true"
+            className="absolute right-0 top-1/2 -translate-y-1/2 size-[200%] translate-x-5/8 pointer-events-none select-none"
+            style={{ zIndex: 0 }}
+          />
+          <div className="relative z-10">
+            <p className="preset-4 font-semibold text-neutral-900">{messages[type].title}</p>
+            <p className="preset-7 text-neutral-900">{messages[type].subtitle}</p>
+          </div>
         </div>
       </div>
     )

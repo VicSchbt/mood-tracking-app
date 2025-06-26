@@ -8,19 +8,17 @@ import Container from '@/components/Container'
 
 export default function HomeEmptyPage() {
   return (
-    <main className="min-h-screen bg-gradient-light font-sans">
-      {/* <Header /> */}
-      <div className="flex flex-col gap-600 px-200 items-center">
+    <main className="min-h-screen bg-gradient-light font-sans flex flex-col gap-600 px-200 items-center pb-1000">
+      <Header />
         <Greeting />
         <LogMoodButton />
 
-        {/* <Container>
+        <Container as="section">
         <AverageCard type="mood" />
         <AverageCard type="sleep" />
         </Container>
 
-        <TrendChart />  */}
-      </div>
+        <TrendChart /> 
     </main>
   )
 }
