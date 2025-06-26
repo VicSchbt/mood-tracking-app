@@ -14,7 +14,7 @@ const redditSans = Reddit_Sans({
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={redditSans.variable}>
-      <body>
+      <body className="min-h-screen bg-gradient-light">
         {children}
       </body>
     </html>
