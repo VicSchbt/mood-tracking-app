@@ -1,47 +1,53 @@
-'use client'
-import Header from '@/components/Header'
-import Greeting from '@/components/Greeting'
-import TrendChart from '@/components/TrendChart'
-import Container from '@/components/Container'
-import { useEffect, useState } from 'react'
-import { fetchMoods } from './lib/api'
-import { MoodEntry } from '@/types'
-import { getAverageMoodLast5Days } from './lib/utils'
-import MoodAverageCard from '@/components/AverageCard/MoodAverageCard'
+'use client';
+import Header from '@/components/Header';
+import Greeting from '@/components/Greeting';
+import TrendChart from '@/components/TrendChart';
+import Container from '@/components/Container';
+import { useEffect, useState } from 'react';
+import { fetchMoods } from './lib/api';
+import { LogEntry } from '@/types';
+import { getAverageMoodLast5Days, getAverageSleepLast5Days } from './lib/utils';
+import MoodAverageCard from '@/components/AverageCard/MoodAverageCard';
+import SleepAverageCard from '@/components/AverageCard/SleepAverageCard';
 
 const HomePage = () => {
-  const [moods, setMoods] = useState<MoodEntry[]>([])
+  const [logs, setLogs] = useState<LogEntry[]>([]);
 
   useEffect(() => {
     async function loadData() {
       try {
-        const fetchedMoods = await fetchMoods()
-        setMoods(fetchedMoods)
-        console.log('Fetched moods:', fetchedMoods)
+        const fetchedLogs = await fetchMoods();
+        setLogs(fetchedLogs);
+        console.log('Fetched logs:', fetchedLogs);
       } catch (err) {
-        console.error('Failed to load moods:', err)
+        console.error('Failed to load logs:', err);
       }
     }
 
-    loadData()
-  }, [])
+    loadData();
+  }, []);
 
   return (
     <>
       <Header />
-      <main className=" font-sans px-200 md:px-500 pb-1000 pt-600 layout-grid lg:gap-800 ">
-        
+      <main className="layout-grid px-200 pt-600 pb-1000 font-sans md:px-500 lg:gap-800">
         <Greeting className="area-greeting" />
 
         <Container as="section" className="area-cards">
-          <MoodAverageCard value={moods.length > 0 ? getAverageMoodLast5Days(moods) : null} moods={moods}/>
-         
+          <MoodAverageCard
+            value={logs.length > 0 ? getAverageMoodLast5Days(logs) : null}
+            logs={logs}
+          />
+          <SleepAverageCard
+            value={logs.length > 0 ? getAverageSleepLast5Days(logs) : null}
+            logs={logs}
+          />
         </Container>
 
-        <TrendChart className="area-chart" /> 
+        <TrendChart className="area-chart" />
       </main>
     </>
-  )
-}
+  );
+};
 
 export default HomePage;

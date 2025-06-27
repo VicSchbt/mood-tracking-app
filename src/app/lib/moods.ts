@@ -1,15 +1,15 @@
 // src/lib/moods.ts
-export type MoodValue = -2 | -1 | 0 | 1 | 2
+export type MoodValue = -2 | -1 | 0 | 1 | 2;
 
 type MoodConfig = {
-  value: MoodValue
-  label: string
-  color: string
+  value: MoodValue;
+  label: string;
+  color: string;
   icon: {
-    white: string
-    color: string
-    }   
-}
+    white: string;
+    color: string;
+  };
+};
 
 export const moodMap: Record<MoodValue, MoodConfig> = {
   [-2]: {
@@ -17,17 +17,17 @@ export const moodMap: Record<MoodValue, MoodConfig> = {
     label: 'Very Sad',
     color: 'bg-red-300',
     icon: {
-        white: '/images/icon-very-sad-white.svg',
-        color: '/images/icon-very-sad-color.svg',
-    },  
+      white: '/images/icon-very-sad-white.svg',
+      color: '/images/icon-very-sad-color.svg',
+    },
   },
   [-1]: {
     value: -1,
     label: 'Sad',
     color: 'bg-red-300',
     icon: {
-        white: '/images/icon-sad-white.svg',
-        color: '/images/icon-sad-color.svg',
+      white: '/images/icon-sad-white.svg',
+      color: '/images/icon-sad-color.svg',
     },
   },
   [0]: {
@@ -35,8 +35,8 @@ export const moodMap: Record<MoodValue, MoodConfig> = {
     label: 'Neutral',
     color: 'bg-amber-300',
     icon: {
-        white: '/images/icon-neutral-white.svg',
-        color: '/images/icon-neutral-color.svg',
+      white: '/images/icon-neutral-white.svg',
+      color: '/images/icon-neutral-color.svg',
     },
   },
   [1]: {
@@ -44,8 +44,8 @@ export const moodMap: Record<MoodValue, MoodConfig> = {
     label: 'Happy',
     color: 'bg-green-300',
     icon: {
-        white: '/images/icon-happy-white.svg',
-        color: '/images/icon-happy-color.svg',
+      white: '/images/icon-happy-white.svg',
+      color: '/images/icon-happy-color.svg',
     },
   },
   [2]: {
@@ -53,13 +53,17 @@ export const moodMap: Record<MoodValue, MoodConfig> = {
     label: 'Very Happy',
     color: 'bg-green-300',
     icon: {
-        white: '/images/icon-very-happy-white.svg',
-        color: '/images/icon-very-happy-color.svg',
+      white: '/images/icon-very-happy-white.svg',
+      color: '/images/icon-very-happy-color.svg',
     },
   },
-}
+};
+/**
+ * Converts a mood value to a human-readable label
+ * @param value - The mood value (-2, -1, 0, 1, or 2)
+ * @returns The corresponding mood label
+ */
 
-// Optional helper
 export function getMood(value: MoodValue) {
-  return moodMap[value]
+  return moodMap[value];
 }

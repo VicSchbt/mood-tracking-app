@@ -1,6 +1,6 @@
-import { MoodEntry } from "@/types"
+import { LogEntry } from "@/types"
 
-export async function fetchMoods(): Promise<MoodEntry[]> {
+export async function fetchMoods(): Promise<LogEntry[]> {
     const res = await fetch('http://localhost:3001/moodEntries')
   
     if (!res.ok) {
