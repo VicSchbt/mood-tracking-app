@@ -5,6 +5,7 @@ type MoodConfig = {
   value: MoodValue;
   label: string;
   color: string;
+  colorHex: string;
   icon: {
     white: string;
     color: string;
@@ -16,6 +17,7 @@ export const moodMap: Record<MoodValue, MoodConfig> = {
     value: -2,
     label: 'Very Sad',
     color: 'bg-red-300',
+    colorHex: '#FFB9B9',
     icon: {
       white: '/images/icon-very-sad-white.svg',
       color: '/images/icon-very-sad-color.svg',
@@ -24,7 +26,8 @@ export const moodMap: Record<MoodValue, MoodConfig> = {
   [-1]: {
     value: -1,
     label: 'Sad',
-    color: 'bg-red-300',
+    color: 'bg-indigo-200',
+    colorHex: '#B8B1FF',
     icon: {
       white: '/images/icon-sad-white.svg',
       color: '/images/icon-sad-color.svg',
@@ -33,7 +36,8 @@ export const moodMap: Record<MoodValue, MoodConfig> = {
   [0]: {
     value: 0,
     label: 'Neutral',
-    color: 'bg-amber-300',
+    color: 'bg-blue-300',
+    colorHex: '#89CAFF',
     icon: {
       white: '/images/icon-neutral-white.svg',
       color: '/images/icon-neutral-color.svg',
@@ -43,6 +47,7 @@ export const moodMap: Record<MoodValue, MoodConfig> = {
     value: 1,
     label: 'Happy',
     color: 'bg-green-300',
+    colorHex: '#89E780',
     icon: {
       white: '/images/icon-happy-white.svg',
       color: '/images/icon-happy-color.svg',
@@ -51,7 +56,8 @@ export const moodMap: Record<MoodValue, MoodConfig> = {
   [2]: {
     value: 2,
     label: 'Very Happy',
-    color: 'bg-green-300',
+    color: 'bg-amber-300',
+    colorHex: '#FFC97C',
     icon: {
       white: '/images/icon-very-happy-white.svg',
       color: '/images/icon-very-happy-color.svg',

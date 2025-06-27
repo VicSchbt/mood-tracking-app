@@ -44,7 +44,7 @@ const HomePage = () => {
           />
         </Container>
 
-        <TrendChart className="area-chart" />
+        <TrendChart className="area-chart" logs={logs} />
       </main>
     </>
   );
