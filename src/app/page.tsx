@@ -9,9 +9,11 @@ import { LogEntry } from '@/types';
 import { getAverageMoodLast5Days, getAverageSleepLast5Days } from './lib/utils';
 import MoodAverageCard from '@/components/AverageCard/MoodAverageCard';
 import SleepAverageCard from '@/components/AverageCard/SleepAverageCard';
+import LogModal from '@/components/LogModal/LogModal';
 
 const HomePage = () => {
   const [logs, setLogs] = useState<LogEntry[]>([]);
+  const [showLogModal, setShowLogModal] = useState(false);
 
   useEffect(() => {
     async function loadData() {
@@ -31,7 +33,7 @@ const HomePage = () => {
     <>
       <Header />
       <main className="layout-grid px-200 pt-600 pb-1000 font-sans md:px-500 lg:gap-800">
-        <Greeting className="area-greeting" />
+        <Greeting className="area-greeting" onOpenLogModal={() => setShowLogModal(true)} />
 
         <Container as="section" className="area-cards">
           <MoodAverageCard
@@ -45,6 +47,7 @@ const HomePage = () => {
         </Container>
 
         <TrendChart className="area-chart min-h-[420px]" logs={logs} />
+        {showLogModal && <LogModal onClose={() => setShowLogModal(false)} />}
       </main>
     </>
   );
