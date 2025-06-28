@@ -1,18 +1,10 @@
 import { useState } from 'react';
-import { MoodValue } from '@/app/lib/moods';
-import { SleepValue } from '@/app/lib/sleep';
 import StepMood from './StepMood';
 import StepFeelings from './StepFeelings';
 import StepJournal from './StepJournal';
 import StepSleep from './StepSleep';
 import Stepper from './Stepper';
-
-interface LogFormData {
-  mood: MoodValue | null;
-  feelings: string[];
-  journalEntry: string;
-  sleep: SleepValue | null;
-}
+import { LogFormData, submitLog } from '@/app/lib/api';
 
 interface LogModalProps {
   onClose: () => void;
@@ -24,7 +16,7 @@ const LogModal = ({ onClose }: LogModalProps) => {
     mood: null,
     feelings: [],
     journalEntry: '',
-    sleep: null,
+    sleepHours: null,
   });
 
   const handleNext = () => setStep((prev) => prev + 1);
@@ -34,9 +26,15 @@ const LogModal = ({ onClose }: LogModalProps) => {
     setFormData((prev) => ({ ...prev, ...updates }));
   };
 
-  const handleSubmit = () => {
-    console.log(formData);
-    onClose();
+  const handleSubmit = async () => {
+    try {
+      const result = await submitLog(formData);
+      console.log('✅ Saved:', result);
+      onClose();
+    } catch (error) {
+      console.error('❌ Submission failed:', error);
+      alert('Something went wrong. Please try again.');
+    }
   };
 
   return (
@@ -76,8 +74,8 @@ const LogModal = ({ onClose }: LogModalProps) => {
         )}
         {step === 3 && (
           <StepSleep
-            sleep={formData.sleep}
-            onSelect={(sleep) => updateFormData({ sleep })}
+            sleepHours={formData.sleepHours}
+            onSelect={(sleepHours) => updateFormData({ sleepHours })}
             onSubmit={handleSubmit}
             onBack={handleBack}
           />

@@ -3,7 +3,7 @@ import FooterButtons from '../Button/FooterButtons';
 import RadioButton from '../RadioButton';
 
 interface StepSleepProps {
-  sleep: SleepValue | null;
+  sleepHours: SleepValue | null;
   onSelect: (val: SleepValue) => void;
   onSubmit: () => void;
   onBack: () => void;
@@ -11,7 +11,7 @@ interface StepSleepProps {
 
 const sleepOptions: SleepValue[] = [9, 7.5, 5.5, 3.5, 1];
 
-const StepSleep = ({ sleep, onSelect, onSubmit, onBack }: StepSleepProps) => {
+const StepSleep = ({ sleepHours, onSelect, onSubmit, onBack }: StepSleepProps) => {
   return (
     <>
       <h3 className="preset-3 font-bold text-neutral-900">
@@ -23,7 +23,7 @@ const StepSleep = ({ sleep, onSelect, onSubmit, onBack }: StepSleepProps) => {
           <RadioButton
             key={value}
             value={value.toString()}
-            checked={sleep === value}
+            checked={sleepHours === value}
             onChange={() => onSelect(value)}
           >
             <span className="preset-5 flex-1 font-semibold text-neutral-900">

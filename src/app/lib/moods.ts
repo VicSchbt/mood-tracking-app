@@ -1,5 +1,3 @@
-// src/lib/moods.ts
-
 /**
  * Mood tracking utilities and configuration
  *

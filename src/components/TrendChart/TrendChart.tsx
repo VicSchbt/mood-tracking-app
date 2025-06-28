@@ -29,6 +29,11 @@ const TrendChart = ({ className, logs }: TrendChartProps) => {
     sleepIndex: sleepIndexMap[log.sleepHours as SleepValue],
   }));
 
+  // Get the data that will actually be rendered in the chart
+  const chartData = transformedLogs.slice(-11);
+
+  console.log('transformedLogs', transformedLogs);
+
   return (
     <Container as="section" className={className}>
       <h2 className="preset-3-mobile md:preset-3 font-semibold text-neutral-900">
@@ -36,10 +41,7 @@ const TrendChart = ({ className, logs }: TrendChartProps) => {
       </h2>
       {transformedLogs && transformedLogs.length > 0 && (
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart
-            data={transformedLogs.slice(-11)}
-            margin={{ top: 20, right: 10, bottom: 10, left: 10 }}
-          >
+          <BarChart data={chartData} margin={{ top: 20, right: 10, bottom: 10, left: 10 }}>
             {[1, 2, 3, 4, 5].map((i) => (
               <ReferenceLine key={i} y={i} stroke="#E0E6FA" strokeWidth={1} />
             ))}
@@ -64,7 +66,6 @@ const TrendChart = ({ className, logs }: TrendChartProps) => {
                 dataKey="mood"
                 content={({ x, y, value }) => {
                   const mood = getMood(value as MoodValue);
-
                   return (
                     <image
                       href={mood.icon.white}
@@ -76,9 +77,11 @@ const TrendChart = ({ className, logs }: TrendChartProps) => {
                   );
                 }}
               />
-              {transformedLogs.map((entry) => {
+              {chartData.map((entry, index) => {
                 const mood = getMood(entry.mood as MoodValue);
-                return <Cell key={entry.createdAt} fill={mood.colorHex} />;
+                console.log('entry', entry);
+                console.log('mood', mood);
+                return <Cell key={`${entry.createdAt}-${index}`} fill={mood.colorHex} />;
               })}
             </Bar>
           </BarChart>
