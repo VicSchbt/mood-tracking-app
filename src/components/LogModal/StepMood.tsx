@@ -1,4 +1,6 @@
 import { getMood, MoodValue } from '@/app/lib/moods';
+import Button from '../Button/Button';
+import RadioButton from '../RadioButton';
 
 interface StepMoodProps {
   mood: MoodValue | null;
@@ -10,39 +12,26 @@ const StepMood = ({ mood, onSelect, onNext }: StepMoodProps) => {
   const moodValues: MoodValue[] = [-2, -1, 0, 1, 2];
 
   return (
-    <div className="space-y-200">
-      <p className="font-semibold text-neutral-800">How was your mood today?</p>
-      <div className="space-y-100">
+    <>
+      <h3 className="preset-3 font-bold text-neutral-900">How was your mood today?</h3>
+      <div className="flex flex-col gap-150">
         {moodValues.map((value) => {
           const data = getMood(value);
           return (
-            <label
+            <RadioButton
               key={value}
-              className={`flex items-center justify-between rounded-xl border px-200 py-150 ${
-                mood === value ? 'border-blue-500 bg-blue-50' : 'border-gray-200'
-              }`}
+              value={value.toString()}
+              checked={mood === value}
+              onChange={() => onSelect(value)}
             >
-              <input
-                type="radio"
-                name="mood"
-                value={value}
-                checked={mood === value}
-                onChange={() => onSelect(value)}
-              />
-              <span className="ml-100 font-medium">{data.label}</span>
-              <img src={data.icon.color} alt={data.label} className="h-200 w-200" />
-            </label>
+              <span className="preset-5 flex-1 font-semibold text-neutral-900">{data.label}</span>
+              <img src={data.icon.color} alt={data.label} className="h-500 w-500" />
+            </RadioButton>
           );
         })}
       </div>
-      <button
-        className="w-full rounded-xl bg-blue-600 py-150 font-semibold text-white"
-        onClick={onNext}
-        disabled={mood === null}
-      >
-        Continue
-      </button>
-    </div>
+      <Button label="Continue" onClick={onNext} disabled={mood === null} />
+    </>
   );
 };
 

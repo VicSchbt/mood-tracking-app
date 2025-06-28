@@ -40,14 +40,14 @@ const LogModal = ({ onClose }: LogModalProps) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-      <div className="relative w-full max-w-md rounded-2xl bg-white p-300 shadow-lg">
+      <div className="bg-gradient-light relative flex w-full max-w-xl flex-col gap-300 rounded-2xl px-250 py-400 shadow-lg md:gap-400 md:px-500 md:py-600">
         <button
-          className="absolute top-150 right-150 text-xl text-gray-400 hover:text-gray-600"
+          className="absolute top-400 right-400 text-2xl text-neutral-300 hover:text-neutral-500"
           onClick={onClose}
         >
           &times;
         </button>
-        <h2 className="mb-200 text-lg font-semibold">Log your mood</h2>
+        <h2 className="preset-2 font-bold text-neutral-900">Log your mood</h2>
 
         {/* Step content */}
         {step === 0 && (

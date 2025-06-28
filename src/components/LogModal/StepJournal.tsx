@@ -1,3 +1,5 @@
+import FooterButtons from '../Button/FooterButtons';
+
 interface StepJournalProps {
   value: string;
   onChange: (val: string) => void;
@@ -9,40 +11,27 @@ const StepJournal = ({ value, onChange, onNext, onBack }: StepJournalProps) => {
   const maxLength = 150;
 
   return (
-    <div className="space-y-200">
-      <p className="font-semibold text-neutral-800">Write about your day...</p>
+    <>
+      <h3 className="preset-3 font-bold text-neutral-900">Write about your day...</h3>
 
-      <div className="relative">
+      <div className="flex flex-col gap-100">
         <textarea
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder="Today, I felt..."
           maxLength={maxLength}
           rows={5}
-          className="w-full resize-none rounded-xl border border-gray-300 px-200 py-150 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          className="bg-neutral-0 w-full resize-none rounded-xl border border-gray-300 px-200 py-150 placeholder:text-neutral-600 placeholder:italic focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          style={{ fontSize: '18px', lineHeight: '130%', letterSpacing: '0px' }}
         />
 
-        <span className="absolute right-2 bottom-2 text-xs text-gray-400">
+        <span className="preset-8 self-end text-neutral-600">
           {value.length}/{maxLength}
         </span>
       </div>
 
-      <div className="flex justify-between gap-150">
-        <button
-          className="w-full rounded-xl bg-gray-100 py-150 font-semibold text-gray-700"
-          onClick={onBack}
-        >
-          Back
-        </button>
-
-        <button
-          className="w-full rounded-xl bg-blue-600 py-150 font-semibold text-white"
-          onClick={onNext}
-        >
-          Continue
-        </button>
-      </div>
-    </div>
+      <FooterButtons onBack={onBack} onNext={onNext} />
+    </>
   );
 };
 

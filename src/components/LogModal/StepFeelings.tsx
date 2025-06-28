@@ -1,4 +1,6 @@
 import { FEELING_TAGS } from '@/app/lib/feelings';
+import Checkbox from '../Checkbox';
+import FooterButtons from '../Button/FooterButtons';
 
 interface StepFeelingsProps {
   selected: string[];
@@ -17,46 +19,29 @@ const StepFeelings = ({ selected, onChange, onNext, onBack }: StepFeelingsProps)
   };
 
   return (
-    <div className="space-y-200">
-      <p className="font-semibold text-neutral-800">How did you feel?</p>
-      <p className="text-sm text-neutral-500">Select up to three tags:</p>
+    <>
+      <div className="gap-075 flex flex-col">
+        <h3 className="preset-3 font-bold text-neutral-900">How did you feel?</h3>
+        <p className="preset-6 text-neutral-600">Select up to three tags:</p>
+      </div>
 
-      <div className="flex flex-wrap gap-100">
+      <div className="flex flex-wrap gap-x-200 gap-y-150">
         {FEELING_TAGS.map((tag) => {
           const isSelected = selected.includes(tag);
           return (
-            <button
+            <Checkbox
               key={tag}
-              type="button"
-              onClick={() => toggleTag(tag)}
-              className={`py-075 rounded-full border px-150 text-sm ${
-                isSelected
-                  ? 'border-blue-500 bg-blue-50 font-semibold text-blue-800'
-                  : 'border-gray-300 bg-white text-gray-700'
-              } `}
-            >
-              {tag}
-            </button>
+              tag={tag}
+              isChecked={isSelected}
+              handleChange={() => toggleTag(tag)}
+              disabled={selected.length >= 3 && !isSelected}
+            />
           );
         })}
       </div>
 
-      <div className="flex justify-between gap-150 pt-200">
-        <button
-          className="w-1/2 rounded-xl bg-gray-100 py-150 font-semibold text-gray-700"
-          onClick={onBack}
-        >
-          Back
-        </button>
-        <button
-          className="w-1/2 rounded-xl bg-blue-600 py-150 font-semibold text-white"
-          onClick={onNext}
-          disabled={selected.length === 0}
-        >
-          Continue
-        </button>
-      </div>
-    </div>
+      <FooterButtons onBack={onBack} onNext={onNext} disabled={selected.length === 0} />
+    </>
   );
 };
 

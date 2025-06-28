@@ -1,4 +1,4 @@
-import LogMoodButton from './LogMoodButton';
+import Button from './Button/Button';
 
 interface GreetingProps {
   className?: string;
@@ -13,7 +13,7 @@ const Greeting = ({ className, onOpenLogModal }: GreetingProps) => {
         How are you feeling today?
       </h1>
       <p className="preset-6 text-neutral-600">Wednesday, April 16th, 2025</p>
-      <LogMoodButton onClick={onOpenLogModal} />
+      <Button label="Log today's mood" onClick={onOpenLogModal} />
     </div>
   );
 };

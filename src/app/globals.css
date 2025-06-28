@@ -1,7 +1,7 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
-  --font-reddit: "Reddit Sans", sans-serif;
+  --font-reddit: 'Reddit Sans', sans-serif;
 
   --spacing-0: 0px;
   --spacing-025: 2px;
@@ -30,26 +30,26 @@
   --radius-24: 24px;
   --radius-full: 999px;
 
-  --color-neutral-0: #FFFFFF;
-  --color-neutral-200: #CBCDD0;
-  --color-neutral-300: #9393B7;
-  --color-neutral-600: #57577B;
-  --color-neutral-900: #12114D;
+  --color-neutral-0: #ffffff;
+  --color-neutral-200: #cbcdd0;
+  --color-neutral-300: #9393b7;
+  --color-neutral-600: #57577b;
+  --color-neutral-900: #12114d;
 
-  --color-blue-100: #E0E6FA;
-  --color-blue-200: #C7D3F7;
-  --color-blue-300: #89CAFF;
-  --color-blue-600: #4865DB;
-  --color-blue-700: #2A4CD5;
+  --color-blue-100: #e0e6fa;
+  --color-blue-200: #c7d3f7;
+  --color-blue-300: #89caff;
+  --color-blue-600: #4865db;
+  --color-blue-700: #2a4cd5;
 
-  --color-red-300: #FFB9B9;
-  --color-red-700: #E60013;
+  --color-red-300: #ffb9b9;
+  --color-red-700: #e60013;
 
-  --color-indigo-200: #B8B1FF;
+  --color-indigo-200: #b8b1ff;
 
-  --color-green-300: #89E780;
+  --color-green-300: #89e780;
 
-  --color-amber-300: #FFC97C;
+  --color-amber-300: #ffc97c;
 }
 
 .preset-1 {
@@ -121,31 +121,36 @@
 }
 
 .bg-gradient-light {
-  background-image: linear-gradient(180deg, #F5F5FF 72.99%, #E0E0FF 100%);
+  background-image: linear-gradient(180deg, #f5f5ff 72.99%, #e0e0ff 100%);
 }
 
-@layer components { 
+@layer components {
   .layout-grid {
     display: grid;
     gap: theme('spacing.600');
     grid-template-columns: 1fr;
     grid-template-areas:
-      "greeting"
-      "cards"
-      "chart";
+      'greeting'
+      'cards'
+      'chart';
   }
 
   @media (min-width: 1024px) {
     .layout-grid {
       grid-template-columns: repeat(3, 1fr);
       grid-template-areas:
-        "greeting greeting greeting"
-        "cards chart chart";
+        'greeting greeting greeting'
+        'cards chart chart';
     }
   }
 
-  .area-greeting { grid-area: greeting; }
-  .area-cards    { grid-area: cards; }
-  .area-chart    { grid-area: chart; }
-
+  .area-greeting {
+    grid-area: greeting;
+  }
+  .area-cards {
+    grid-area: cards;
+  }
+  .area-chart {
+    grid-area: chart;
+  }
 }
