@@ -5,12 +5,14 @@ import StepJournal from './StepJournal';
 import StepSleep from './StepSleep';
 import Stepper from './Stepper';
 import { LogFormData, submitLog } from '@/app/lib/api';
+import { useLogStore } from '@/app/store/logStore';
 
 interface LogModalProps {
   onClose: () => void;
 }
 
 const LogModal = ({ onClose }: LogModalProps) => {
+  const { addLog } = useLogStore();
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState<LogFormData>({
     mood: null,
@@ -29,6 +31,7 @@ const LogModal = ({ onClose }: LogModalProps) => {
   const handleSubmit = async () => {
     try {
       const result = await submitLog(formData);
+      addLog(result);
       console.log('✅ Saved:', result);
       onClose();
     } catch (error) {

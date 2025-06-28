@@ -4,23 +4,20 @@ import Greeting from '@/components/Greeting';
 import TrendChart from '@/components/TrendChart/TrendChart';
 import Container from '@/components/Container';
 import { useEffect, useState } from 'react';
-import { fetchMoods } from './lib/api';
-import { LogEntry } from '@/types';
 import { getAverageMoodLast5Days, getAverageSleepLast5Days } from './lib/utils';
 import MoodAverageCard from '@/components/AverageCard/MoodAverageCard';
 import SleepAverageCard from '@/components/AverageCard/SleepAverageCard';
 import LogModal from '@/components/LogModal/LogModal';
+import { useLogStore } from './store/logStore';
 
 const HomePage = () => {
-  const [logs, setLogs] = useState<LogEntry[]>([]);
+  const { logs, fetchLogs } = useLogStore();
   const [showLogModal, setShowLogModal] = useState(false);
 
   useEffect(() => {
     async function loadData() {
       try {
-        const fetchedLogs = await fetchMoods();
-        setLogs(fetchedLogs);
-        console.log('Fetched logs:', fetchedLogs);
+        await fetchLogs();
       } catch (err) {
         console.error('Failed to load logs:', err);
       }
