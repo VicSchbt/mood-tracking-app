@@ -10,11 +10,13 @@ import {
   ResponsiveContainer,
   LabelList,
   ReferenceLine,
+  Tooltip,
 } from 'recharts';
 import { getMood, MoodValue } from '@/app/lib/moods';
 import CustomXAxisTick from './CustomXAxisTick';
 import CustomYAxisTick from './CustomYAxisTick';
 import { sleepIndexMap, SleepValue } from '@/app/lib/sleep';
+import CustomTooltip from './CustomTooltip';
 
 interface TrendChartProps {
   className?: string;
@@ -56,6 +58,7 @@ const TrendChart = ({ className, logs }: TrendChartProps) => {
               interval={0}
               tick={<CustomXAxisTick />}
             />
+            <Tooltip content={<CustomTooltip />} cursor={{ fill: 'transparent' }} />
             <Bar dataKey="sleepIndex" radius={[30, 30, 30, 30]} barSize={40}>
               <LabelList
                 dataKey="mood"
