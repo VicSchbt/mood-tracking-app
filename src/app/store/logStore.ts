@@ -8,9 +8,10 @@ interface LogStore {
   addLog: (log: LogEntry) => void;
   setLogs: (logs: LogEntry[]) => void;
   clearLogs: () => void;
+  getLastLog: () => LogEntry | null;
 }
 
-export const useLogStore = create<LogStore>((set) => ({
+export const useLogStore = create<LogStore>((set, get) => ({
   logs: [],
   fetchLogs: async () => {
     const logs = await fetchMoods();
@@ -19,4 +20,8 @@ export const useLogStore = create<LogStore>((set) => ({
   addLog: (log) => set((state) => ({ logs: [...state.logs, log] })),
   setLogs: (logs) => set({ logs }),
   clearLogs: () => set({ logs: [] }),
+  getLastLog: () => {
+    const logs = get().logs;
+    return logs.length > 0 ? logs[logs.length - 1] : null;
+  },
 }));

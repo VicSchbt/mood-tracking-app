@@ -4,7 +4,7 @@ import Greeting from '@/components/Greeting';
 import TrendChart from '@/components/TrendChart/TrendChart';
 import Container from '@/components/Container';
 import { useEffect, useState } from 'react';
-import { getAverageMoodLast5Days, getAverageSleepLast5Days } from './lib/utils';
+import { getAverageMoodLast5Days, getAverageSleepLast5Days } from './lib/utils/utils';
 import MoodAverageCard from '@/components/AverageCard/MoodAverageCard';
 import SleepAverageCard from '@/components/AverageCard/SleepAverageCard';
 import LogModal from '@/components/LogModal/LogModal';

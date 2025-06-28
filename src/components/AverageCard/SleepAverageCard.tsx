@@ -1,5 +1,5 @@
 import { getSleep, SleepValue } from '@/app/lib/sleep';
-import { compareLast5WithPrevious5Sleep, isValueEmpty } from '@/app/lib/utils';
+import { compareLast5WithPrevious5Sleep, isValueEmpty } from '@/app/lib/utils/utils';
 import { LogEntry } from '@/types';
 import { useEffect, useState } from 'react';
 import AverageCard from './AverageCard';

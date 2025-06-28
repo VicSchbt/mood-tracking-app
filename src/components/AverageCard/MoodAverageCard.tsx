@@ -4,7 +4,7 @@ import { getMood, MoodValue } from '@/app/lib/moods';
 import AverageCard from './AverageCard';
 import { useEffect, useState } from 'react';
 import TendancyLine from './TendancyLine';
-import { compareLast5WithPrevious5Mood, isValueEmpty } from '@/app/lib/utils';
+import { compareLast5WithPrevious5Mood, isValueEmpty } from '@/app/lib/utils/utils';
 import { LogEntry } from '@/types';
 
 type Props = {

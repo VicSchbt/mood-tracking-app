@@ -1,6 +1,6 @@
 import { LogEntry, TendencyType } from '@/types';
-import { MoodValue } from './moods';
-import { SleepValue } from './sleep';
+import { MoodValue } from '../moods';
+import { SleepValue } from '../sleep';
 
 /**
  * Calculates the average mood of the last 5 mood entries (by createdAt descending).
@@ -24,7 +24,7 @@ function roundToSleepValue(value: number): SleepValue {
   if (value < 4) return 3.5;
   if (value < 6) return 5.5;
   if (value < 8) return 7.5;
-  return 9.5;
+  return 9;
 }
 
 /**
