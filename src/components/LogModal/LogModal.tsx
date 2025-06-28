@@ -5,6 +5,7 @@ import StepMood from './StepMood';
 import StepFeelings from './StepFeelings';
 import StepJournal from './StepJournal';
 import StepSleep from './StepSleep';
+import Stepper from './Stepper';
 
 interface LogFormData {
   mood: MoodValue | null;
@@ -48,7 +49,7 @@ const LogModal = ({ onClose }: LogModalProps) => {
           &times;
         </button>
         <h2 className="preset-2 font-bold text-neutral-900">Log your mood</h2>
-
+        <Stepper current={step} />
         {/* Step content */}
         {step === 0 && (
           <StepMood
