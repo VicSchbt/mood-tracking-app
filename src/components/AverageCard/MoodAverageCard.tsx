@@ -32,7 +32,7 @@ const MoodAverageCard = ({ value, logs }: Props) => {
     <AverageCard title="Average Mood" backgroundColor={backgroundColor}>
       <div className="flex flex-col justify-start gap-150">
         <div className="flex items-center gap-200">
-          {!empty && <img src={mood!.icon.color} alt="" aria-hidden="true" className="size-300" />}
+          {!empty && <img src={mood!.icon.white} alt="" aria-hidden="true" className="size-300" />}
 
           <p className="preset-4 font-semibold text-neutral-900">{title}</p>
         </div>

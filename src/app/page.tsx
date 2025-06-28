@@ -1,7 +1,7 @@
 'use client';
 import Header from '@/components/Header';
 import Greeting from '@/components/Greeting';
-import TrendChart from '@/components/TrendChart';
+import TrendChart from '@/components/TrendChart/TrendChart';
 import Container from '@/components/Container';
 import { useEffect, useState } from 'react';
 import { fetchMoods } from './lib/api';
@@ -44,7 +44,7 @@ const HomePage = () => {
           />
         </Container>
 
-        <TrendChart className="area-chart" logs={logs} />
+        <TrendChart className="area-chart min-h-[420px]" logs={logs} />
       </main>
     </>
   );
