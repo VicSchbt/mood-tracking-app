@@ -3,6 +3,8 @@ import Button from '../Button/Button';
 import { formatDateWithOrdinal } from '@/app/lib/utils/date';
 import MoodCard from './MoodCard';
 import { MoodValue } from '@/app/lib/moods';
+import SleepCard from './SleepCard';
+import { SleepValue } from '@/app/lib/sleep';
 
 interface GreetingProps {
   className?: string;
@@ -30,7 +32,8 @@ const Greeting = ({ className, onOpenLogModal }: GreetingProps) => {
       ) : (
         <div className="grid w-full grid-cols-1 gap-400 lg:grid-cols-3">
           <MoodCard mood={lastLog?.mood as MoodValue} />
-          {/* <SleepCard sleep={lastLog?.sleep} />
+          <SleepCard sleep={lastLog?.sleepHours as SleepValue} />
+          {/*
             <ReflectionCard reflection={lastLog?.reflection} /> */}
         </div>
       )}

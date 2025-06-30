@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 interface ContainerProps {
   children: React.ReactNode;
@@ -6,9 +6,11 @@ interface ContainerProps {
   className?: string;
 }
 
-const Container = ({ children, as: Component = "div", className }: ContainerProps) => {
+const Container = ({ children, as: Component = 'div', className }: ContainerProps) => {
   return (
-    <Component className={`w-full rounded-16 bg-neutral-0 border border-blue-100 py-250 px-200 flex flex-col gap-300 ${className}`}>
+    <Component
+      className={`${className} rounded-16 bg-neutral-0 flex w-full flex-col gap-300 border border-blue-100 px-200 py-250`}
+    >
       {children}
     </Component>
   );
