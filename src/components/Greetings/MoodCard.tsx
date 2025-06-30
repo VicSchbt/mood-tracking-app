@@ -14,7 +14,7 @@ const MoodCard = ({ mood }: MoodCardProps) => {
   return (
     <Container
       as="section"
-      className="relative w-full items-center justify-center overflow-hidden md:items-start md:justify-between lg:col-span-2 lg:h-[340px] lg:p-400"
+      className="relative h-full w-full items-center justify-center overflow-hidden md:items-start md:justify-between lg:col-span-2 lg:row-span-2 lg:p-400"
     >
       <div className="flex flex-col gap-100">
         <p className="preset-3 text-left font-bold text-neutral-600">I'm feeling</p>
