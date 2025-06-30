@@ -1,6 +1,8 @@
 import { useLogStore } from '@/app/store/logStore';
-import Button from './Button/Button';
+import Button from '../Button/Button';
 import { formatDateWithOrdinal } from '@/app/lib/utils/date';
+import MoodCard from './MoodCard';
+import { MoodValue } from '@/app/lib/moods';
 
 interface GreetingProps {
   className?: string;
@@ -23,7 +25,15 @@ const Greeting = ({ className, onOpenLogModal }: GreetingProps) => {
         How are you feeling today?
       </h1>
       <p className="preset-6 text-neutral-600">{today}</p>
-      {!hasLoggedToday && <Button label="Log today's mood" onClick={onOpenLogModal} />}
+      {!hasLoggedToday ? (
+        <Button label="Log today's mood" onClick={onOpenLogModal} />
+      ) : (
+        <div className="grid w-full grid-cols-1 gap-400 lg:grid-cols-3">
+          <MoodCard mood={lastLog?.mood as MoodValue} />
+          {/* <SleepCard sleep={lastLog?.sleep} />
+            <ReflectionCard reflection={lastLog?.reflection} /> */}
+        </div>
+      )}
     </div>
   );
 };

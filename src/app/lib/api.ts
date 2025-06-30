@@ -41,3 +41,13 @@ export async function submitLog(data: LogFormData) {
 
   return res.json();
 }
+
+export async function fetchQuotes() {
+  const res = await fetch(`${BASE_URL}/moodQuotes`);
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch quotes');
+  }
+
+  return res.json();
+}

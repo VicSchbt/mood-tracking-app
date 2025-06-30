@@ -1,6 +1,6 @@
 'use client';
 import Header from '@/components/Header';
-import Greeting from '@/components/Greeting';
+import Greeting from '@/components/Greetings/Greetings';
 import TrendChart from '@/components/TrendChart/TrendChart';
 import Container from '@/components/Container';
 import { useEffect, useState } from 'react';
@@ -9,15 +9,18 @@ import MoodAverageCard from '@/components/AverageCard/MoodAverageCard';
 import SleepAverageCard from '@/components/AverageCard/SleepAverageCard';
 import LogModal from '@/components/LogModal/LogModal';
 import { useLogStore } from './store/logStore';
+import { useQuoteStore } from './store/quoteStore';
 
 const HomePage = () => {
   const { logs, fetchLogs } = useLogStore();
+  const { fetchQuotes } = useQuoteStore();
   const [showLogModal, setShowLogModal] = useState(false);
 
   useEffect(() => {
     async function loadData() {
       try {
         await fetchLogs();
+        await fetchQuotes();
       } catch (err) {
         console.error('Failed to load logs:', err);
       }
