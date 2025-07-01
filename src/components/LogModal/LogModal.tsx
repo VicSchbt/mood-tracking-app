@@ -42,16 +42,12 @@ const LogModal = ({ onClose }: LogModalProps) => {
   };
 
   return (
-    <Modal className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-      <button
-        className="absolute top-400 right-400 text-2xl text-neutral-300 hover:text-neutral-500"
-        onClick={onClose}
-      >
-        &times;
-      </button>
+    <Modal
+      onClose={onClose}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+    >
       <h2 className="preset-2 font-bold text-neutral-900">Log your mood</h2>
       <Stepper current={step} />
-      {/* Step content */}
       {step === 0 && (
         <StepMood
           mood={formData.mood}

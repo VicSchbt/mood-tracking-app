@@ -14,7 +14,7 @@ const StepMood = ({ mood, onSelect, onNext }: StepMoodProps) => {
   return (
     <>
       <h3 className="preset-3 font-bold text-neutral-900">How was your mood today?</h3>
-      <div className="flex flex-col gap-150">
+      <div className="flex w-full flex-col items-stretch gap-150">
         {moodValues.map((value) => {
           const data = getMood(value);
           return (

@@ -10,12 +10,13 @@ import SleepAverageCard from '@/components/AverageCard/SleepAverageCard';
 import LogModal from '@/components/LogModal/LogModal';
 import { useLogStore } from './store/logStore';
 import { useQuoteStore } from './store/quoteStore';
+import SettingsModal from '@/components/SettingsModal';
 
 const HomePage = () => {
   const { logs, fetchLogs } = useLogStore();
   const { fetchQuotes } = useQuoteStore();
   const [showLogModal, setShowLogModal] = useState(false);
-
+  const [showSettingsModal, setShowSettingsModal] = useState(false);
   useEffect(() => {
     async function loadData() {
       try {
@@ -31,7 +32,7 @@ const HomePage = () => {
 
   return (
     <>
-      <Header />
+      <Header onSettingsClick={() => setShowSettingsModal(true)} />
       <main className="layout-grid mx-auto max-w-[1200px] px-200 pt-600 pb-1000 font-sans md:px-500 lg:gap-800">
         <Greeting className="area-greeting" onOpenLogModal={() => setShowLogModal(true)} />
 
@@ -48,6 +49,9 @@ const HomePage = () => {
 
         <TrendChart className="area-chart min-h-[420px]" logs={logs} />
         {showLogModal && <LogModal onClose={() => setShowLogModal(false)} />}
+        {showSettingsModal && (
+          <SettingsModal onClose={() => setShowSettingsModal(false)} onSubmit={() => {}} />
+        )}
       </main>
     </>
   );
