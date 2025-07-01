@@ -222,5 +222,25 @@
       "It's okay to rest; self-care isn't selfish.",
       "Healing takes time - be patient and kind to yourself."
     ]
-  }
+  },
+  "users": [
+    {
+      "id": 1,
+      "email": "lisa@example.com",
+      "password": "password123",
+      "name": "Lisa"
+    },
+    {
+      "id": "5e85",
+      "email": "vic@hello.com",
+      "password": "azerty",
+      "name": "Victoire"
+    },
+    {
+      "id": "b921",
+      "email": "choupi@hello.com",
+      "password": "azerty",
+      "name": "Choupi"
+    }
+  ]
 }

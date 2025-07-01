@@ -7,3 +7,10 @@ export type LogEntry = {
 };
 
 export type TendencyType = 'increase' | 'decrease' | 'equal' | null;
+
+export type User = {
+  id: string;
+  email: string;
+  password: string;
+  name: string;
+};
