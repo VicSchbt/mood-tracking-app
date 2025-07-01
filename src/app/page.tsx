@@ -32,7 +32,7 @@ const HomePage = () => {
   return (
     <>
       <Header />
-      <main className="layout-grid px-200 pt-600 pb-1000 font-sans md:px-500 lg:gap-800">
+      <main className="layout-grid mx-auto max-w-[1200px] px-200 pt-600 pb-1000 font-sans md:px-500 lg:gap-800">
         <Greeting className="area-greeting" onOpenLogModal={() => setShowLogModal(true)} />
 
         <Container as="section" className="area-cards">
