@@ -5,6 +5,7 @@ import authRoutes from "./routes/auth";
 import { requestLogger } from "./middleware/logger";
 import logsRoutes from "./routes/logs";
 import quotesRoutes from "./routes/quotes";
+import userRoutes from "./routes/user";
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.use(requestLogger);
 app.use("/auth", authRoutes);
 app.use("/logs", logsRoutes);
 app.use("/quotes", quotesRoutes);
+app.use("/user", userRoutes);
 
 app.get("/", (req, res) => {
   res.send("API is running 🎉");

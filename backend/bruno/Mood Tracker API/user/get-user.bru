@@ -1,0 +1,15 @@
+meta {
+  name: get-user
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:3002/user
+  body: none
+  auth: inherit
+}
+
+headers {
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyOWIxN2Y0Zi03NTM4LTRmZTItOWNiMi0yMTEzODZmYTRkMmIiLCJpYXQiOjE3NTIwNzgyMTEsImV4cCI6MTc1MjY4MzAxMX0._HFuVKk3hUU2XZ9TfjI9KlUmeFgzeQiNbwsDg71X57s
+}
