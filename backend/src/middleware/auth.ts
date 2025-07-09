@@ -15,13 +15,17 @@ export const authenticate = (
   const authHeader = req.headers.authorization;
   const token = authHeader?.split(" ")[1];
 
-  if (!token) return res.status(401).json({ message: "Missing token" });
+  if (!token) {
+    res.status(401).json({ message: "Missing token" });
+    return;
+  }
 
   try {
     const decoded = jwt.verify(token, JWT_SECRET) as { userId: string };
     req.userId = decoded.userId;
     next();
   } catch {
-    return res.status(401).json({ message: "Invalid token" });
+    res.status(401).json({ message: "Invalid token" });
+    return;
   }
 };

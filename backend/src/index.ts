@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import authRoutes from "./routes/auth";
 import { requestLogger } from "./middleware/logger";
+import logsRoutes from "./routes/logs";
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use(requestLogger);
 
 app.use("/auth", authRoutes);
+app.use("/logs", logsRoutes);
 
 app.get("/", (req, res) => {
   res.send("API is running 🎉");
