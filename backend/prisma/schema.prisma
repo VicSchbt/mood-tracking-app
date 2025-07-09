@@ -27,3 +27,9 @@ model Log {
   userId     String
   user       User     @relation(fields: [userId], references: [id])
 }
+
+model MoodQuote {
+  id        String   @id @default(uuid())
+  mood      Int      // mood value from -2 to 2
+  text      String
+}

@@ -1,0 +1,15 @@
+meta {
+  name: get-quote
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:3002/quotes?mood=1
+  body: none
+  auth: inherit
+}
+
+params:query {
+  mood: 1
+}
