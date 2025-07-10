@@ -1,9 +1,13 @@
-import { Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
 import prisma from "../lib/prisma";
 import logger from "../lib/logger";
+import { logSchema } from "../validators/logSchemas";
+import { AppError } from "../lib/errors";
+import { z } from "zod";
 
 export const getLogs = async (req: Request, res: Response) => {
   const userId = (req as any).userId;
+
   try {
     const logs = await prisma.log.findMany({
       where: {
@@ -21,30 +25,28 @@ export const getLogs = async (req: Request, res: Response) => {
   }
 };
 
-export const createLog = async (req: Request, res: Response) => {
+export const createLog = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   const userId = (req as any).userId;
-  const { mood, feelings, journal, sleepHours } = req.body;
-
-  if (typeof mood !== "number" || typeof sleepHours !== "number") {
-    res.status(400).json({ message: "Mood and sleep hours are required" });
-    return;
-  }
 
   try {
+    const { mood, feelings, journal, sleepHours } = logSchema.parse(req.body);
+
     const newLog = await prisma.log.create({
-      data: {
-        mood,
-        feelings,
-        journal,
-        sleepHours,
-        userId,
-      },
+      data: { mood, feelings, journal, sleepHours, userId },
     });
 
     logger.info(`[LOGS] Created new log for user ${userId}`);
     res.status(201).json(newLog);
-  } catch (error) {
-    logger.error(`[LOGS] Error creating log: ${error}`);
-    res.status(500).json({ message: "Failed to create log" });
+  } catch (err) {
+    if (err instanceof z.ZodError) {
+      const msg = err.issues.map((e) => e.message).join(", ");
+      next(new AppError(msg, 400));
+    } else {
+      next(err);
+    }
   }
 };

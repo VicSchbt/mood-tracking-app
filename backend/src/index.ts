@@ -6,6 +6,7 @@ import { requestLogger } from "./middleware/logger";
 import logsRoutes from "./routes/logs";
 import quotesRoutes from "./routes/quotes";
 import userRoutes from "./routes/user";
+import { errorHandler } from "./middleware/errorHandler";
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ const PORT = process.env.PORT || 3002;
 app.use(cors());
 app.use(express.json());
 app.use(requestLogger);
+app.use(errorHandler);
 
 app.use("/auth", authRoutes);
 app.use("/logs", logsRoutes);

@@ -1,0 +1,32 @@
+meta {
+  name: signup-valid
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:3002/auth/signup
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "email": "{{generatedEmail}}",
+    "password": "securepass123",
+    "name": "Valid User"
+  }
+}
+
+assert {
+  res.status: eq 201
+  res.body.token: isNotEmpty
+  res.body.user.email: eq {{generatedEmail}}
+}
+
+script:pre-request {
+  const random = Math.floor(Math.random() * 100000);
+  const email = `testuser${random}@mail.com`;
+  bru.setEnvVar('generatedEmail',email);
+  
+}
