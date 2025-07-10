@@ -13,8 +13,8 @@ model User {
   password  String
   name      String
   avatarUrl String?
-  logs      Log[]
   createdAt DateTime @default(now())
+  logs      Log[]
 }
 
 model Log {
@@ -29,7 +29,7 @@ model Log {
 }
 
 model MoodQuote {
-  id        String   @id @default(uuid())
-  mood      Int      // mood value from -2 to 2
-  text      String
+  id   String @id @default(uuid())
+  mood Int
+  text String
 }

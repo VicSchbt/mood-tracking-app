@@ -1,0 +1,15 @@
+meta {
+  name: get-mood
+  type: http
+  seq: 1
+}
+
+get {
+  url: mood-tracking-app-production.up.railway.app/quotes?mood=1
+  body: none
+  auth: inherit
+}
+
+params:query {
+  mood: 1
+}
