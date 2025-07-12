@@ -16,7 +16,6 @@ const PORT = process.env.PORT || 3002;
 app.use(cors());
 app.use(express.json());
 app.use(requestLogger);
-app.use(errorHandler);
 
 app.use("/auth", authRoutes);
 app.use("/logs", logsRoutes);
@@ -25,6 +24,14 @@ app.use("/user", userRoutes);
 
 app.get("/", (req, res) => {
   res.send("API is running 🎉");
+});
+
+app.use(errorHandler);
+
+app.router.stack.forEach((middleware: any) => {
+  if (middleware.route) {
+    console.log("[ROUTE]", middleware.route.path);
+  }
 });
 
 app.listen(PORT, () => {
